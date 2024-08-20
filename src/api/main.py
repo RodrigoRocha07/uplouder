@@ -10,6 +10,7 @@ import asyncio
 import time
 import os
 
+#uvicorn nome_do_app:app --port 8080
 
 
 app = FastAPI()
@@ -21,7 +22,7 @@ app.add_middleware(
     allow_methods=["*"],  # Permite todos os métodos HTTP (GET, POST, PUT, DELETE, etc)
     allow_headers=["*"],  # Permite todos os headers
 )
-
+#
 
 async def token_authentication_in_header(request: Request):
     header = request.headers
@@ -93,7 +94,8 @@ async def process_csv(name: str, user_id: int, path: str, db: Session):
             print(f"Erro ao deletar o arquivo {path}: {e}")
     
     fim = time.time()
-    RepositorioBases(db).atualizar(base.id)
+    RepositorioBases(db).carregar(base.id)
+    RepositorioCampaign(db).atualizar_disparos(base.id)
     print(f"Tempo de execução de {fim - inicio} segundos")
 
 @app.post("/upload_csv")

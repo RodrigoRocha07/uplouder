@@ -1,5 +1,6 @@
 from src.infra.sqlalchemy.models import models
 from sqlalchemy.orm import Session
+from sqlalchemy import func
 
 
 
@@ -19,7 +20,7 @@ class RepositorioBases():
         return db_base
     
 
-    def atualizar(self, id):
+    def carregar(self, id):
         db_base = self.db.query(models.Bases).filter(models.Bases.id == id).first()     
         db_base.carregada = True
         self.db.commit()
@@ -66,3 +67,16 @@ class RepositorioInfos():
             session.commit()
 
 
+class RepositorioCampaign():
+    def __init__(self, db:Session):
+        self.db = db
+
+
+    def atualizar_disparos(self, base_id):
+        lista_campanhas = self.db.query(models.Campaign).filter(models.Campaign.base_id == base_id).all()
+        qtd_infos = self.db.query(func.count(models.Infos.id)).filter(models.Infos.bases_id == base_id).scalar()
+        for campanha in lista_campanhas:
+            campanha.disparos_ate = qtd_infos
+            self.db.commit()
+            self.db.refresh(campanha)
+            return campanha
