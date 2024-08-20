@@ -35,6 +35,8 @@ class Bases(Base):
     user_id = Column(Integer, ForeignKey('users.id'))
     createdAt = Column(DateTime, default=now_in_brasilia)    
     updatedAt = Column(DateTime, default=now_in_brasilia, onupdate=now_in_brasilia)
+    carregada = Column(Boolean,nullable=False)
+
 
 class Infos(Base):
     __tablename__ = 'infos'

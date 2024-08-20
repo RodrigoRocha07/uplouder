@@ -10,7 +10,8 @@ class RepositorioBases():
     def criar(self, nome_escolhido, chaves_csv, user_id):
         db_base = models.Bases(name = nome_escolhido,
                                 chaves = chaves_csv,
-                                user_id = user_id
+                                user_id = user_id,
+                                carregada = False
                                 )
         self.db.add(db_base)
         self.db.commit()
@@ -18,7 +19,12 @@ class RepositorioBases():
         return db_base
     
 
-
+    def atualizar(self, id):
+        db_base = self.db.query(models.Bases).filter(models.Bases.id == id).first()     
+        db_base.carregada = True
+        self.db.commit()
+        self.db.refresh(db_base)
+        return db_base
 
 #________________________________________________________________________________________________
 

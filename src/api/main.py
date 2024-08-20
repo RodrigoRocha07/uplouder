@@ -93,6 +93,7 @@ async def process_csv(name: str, user_id: int, path: str, db: Session):
             print(f"Erro ao deletar o arquivo {path}: {e}")
     
     fim = time.time()
+    RepositorioBases(db).atualizar(base.id)
     print(f"Tempo de execução de {fim - inicio} segundos")
 
 @app.post("/upload_csv")
