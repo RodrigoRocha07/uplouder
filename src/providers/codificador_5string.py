@@ -1,5 +1,8 @@
 import string
 
+
+
+
 # Definindo os caracteres permitidos para a codificação
 ALPHABET = string.ascii_uppercase + string.ascii_lowercase + string.digits  # 62 caracteres
 

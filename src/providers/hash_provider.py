@@ -1,6 +1,9 @@
 from passlib.context import CryptContext
 import hashlib
 
+
+
+
 pwd_context = CryptContext(schemes=['bcrypt'])
 
 def gerar_hash(texto):

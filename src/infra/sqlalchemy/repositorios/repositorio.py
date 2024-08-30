@@ -58,7 +58,7 @@ class RepositorioInfos():
         self.db.bulk_save_objects(db_infos)
         self.db.commit()
         return db_infos
-    
+
 
     def criar_com_session_privada(self, base_id, list_data):
         with self.get_new_session() as session:

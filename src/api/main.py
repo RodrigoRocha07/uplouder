@@ -10,7 +10,7 @@ import asyncio
 import time
 import os
 
-#uvicorn nome_do_app:app --port 8080
+#uvicorn src.api.main:app --port 8080
 
 
 app = FastAPI()
@@ -100,10 +100,12 @@ async def process_csv(name: str, user_id: int, path: str, db: Session):
 
 @app.post("/upload_csv")
 async def salvar_csv(
+    request: Request,
     name: str = Form(...),
     csv_file: UploadFile = File(...),
     user_id: int = Form(...),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    authenticated: None = Depends(token_authentication_in_header)
 ):
     csv_file_location = os.path.join(UPLOAD_DIRECTORY, csv_file.filename)
     with open(csv_file_location, "wb") as f:
@@ -112,5 +114,5 @@ async def salvar_csv(
     # Cria uma tarefa assíncrona para processar o CSV
     asyncio.create_task(process_csv(name, user_id, csv_file_location, db))
 
-    return {"info": f"Arquivo '{csv_file.filename}' salvo em '{csv_file_location}'. Processamento em segundo plano iniciado."}
+    return {"message":"iniciando processamento do arquivo","severity":"success"}
 

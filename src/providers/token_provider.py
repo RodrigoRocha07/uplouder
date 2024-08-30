@@ -1,6 +1,7 @@
 import jwt
 from datetime import datetime, timezone, timedelta
 
+
 SECRET_KEY = "IMPULSEMAX"
 ALGORITHM = 'HS256'
 TIME_EXP = 60*24*366
