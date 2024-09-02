@@ -36,6 +36,7 @@ class Bases(Base):
     createdAt = Column(DateTime, default=now_in_brasilia)    
     updatedAt = Column(DateTime, default=now_in_brasilia, onupdate=now_in_brasilia)
     carregada = Column(Boolean,nullable=False)
+    n_clientes = Column(Integer, nullable=True)
 
 
 class Infos(Base):

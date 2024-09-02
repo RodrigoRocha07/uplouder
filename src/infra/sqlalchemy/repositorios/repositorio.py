@@ -12,7 +12,8 @@ class RepositorioBases():
         db_base = models.Bases(name = nome_escolhido,
                                 chaves = chaves_csv,
                                 user_id = user_id,
-                                carregada = False
+                                carregada = False,
+                                n_clientes = 0
                                 )
         self.db.add(db_base)
         self.db.commit()
@@ -75,6 +76,13 @@ class RepositorioCampaign():
     def atualizar_disparos(self, base_id):
         lista_campanhas = self.db.query(models.Campaign).filter(models.Campaign.base_id == base_id).all()
         qtd_infos = self.db.query(func.count(models.Infos.id)).filter(models.Infos.bases_id == base_id).scalar()
+
+        db_base = self.db.query(models.Bases).filter(models.Bases.id == base_id).first()  
+        print(db_base)  
+        db_base.n_clientes = qtd_infos
+        print(db_base)
+        self.db.commit()
+        self.db.refresh(db_base)
         for campanha in lista_campanhas:
             campanha.disparos_ate = qtd_infos
             self.db.commit()
