@@ -24,8 +24,8 @@ engine = create_engine(
     pool_size=20,        # Tamanho do pool de conexões
     max_overflow=20,     # Número máximo de conexões adicionais
     pool_recycle=3600,   # Reciclar conexões após 3600 segundos (1 hora)
-    pool_timeout=30,     # Tempo máximo de espera para uma conexão do pool (30 segundos)
-    connect_args={"connect_timeout": 1000}  # Timeout de conexão do MySQL aumentado para um valor muito alto
+    pool_timeout=3600,     # Tempo máximo de espera para uma conexão do pool (30 segundos)
+    connect_args={"connect_timeout": 30}  # Timeout de conexão do MySQL aumentado para um valor muito alto
 )
 
 # Configurar SessionLocal para criar sessões de banco de dados
