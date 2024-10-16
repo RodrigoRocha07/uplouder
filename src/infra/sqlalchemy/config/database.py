@@ -15,7 +15,8 @@ logger = logging.getLogger(__name__)
 
 
 # Carregar URL do banco de dados
-database_url = "mysql+mysqlconnector://crm_impulse_user:dBVd(PlP]Z)3@crm-impulse.c7a0kiga29ky.us-east-2.rds.amazonaws.com/crm-impulse"
+#database_url = "mysql+mysqlconnector://crm_impulse_user:dBVd(PlP]Z)3@crm-impulse.c7a0kiga29ky.us-east-2.rds.amazonaws.com/crm-impulse"
+database_url =  "postgresql://postgres:!impulse2828@sendblack-rds.c7a0kiga29ky.us-east-2.rds.amazonaws.com:5432/postgres"
 
 # Configurar o motor do SQLAlchemy com pool_pre_ping para verificar a conexão antes de usá-la
 engine = create_engine(
