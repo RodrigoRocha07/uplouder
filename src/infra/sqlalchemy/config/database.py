@@ -15,8 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 # Carregar URL do banco de dados
-#database_url = "mysql+mysqlconnector://crm_impulse_user:dBVd(PlP]Z)3@crm-impulse.c7a0kiga29ky.us-east-2.rds.amazonaws.com/crm-impulse"
-database_url =  "postgresql://postgres:!impulse2828@sendblack-rds.c7a0kiga29ky.us-east-2.rds.amazonaws.com:5432/postgres"
+database_url =  "postgresql://impulse_crm_user:impulse2828@impulse-crm-db.c524eqmw0xhr.us-east-2.rds.amazonaws.com:5432/impulse-crm-db"
 
 # Configurar o motor do SQLAlchemy com pool_pre_ping para verificar a conexão antes de usá-la
 engine = create_engine(
@@ -25,8 +24,8 @@ engine = create_engine(
     pool_size=20,        # Tamanho do pool de conexões
     max_overflow=20,     # Número máximo de conexões adicionais
     pool_recycle=3600,   # Reciclar conexões após 3600 segundos (1 hora)
-    pool_timeout=3600,     # Tempo máximo de espera para uma conexão do pool (30 segundos)
-    connect_args={"connect_timeout": 30}  # Timeout de conexão do MySQL aumentado para um valor muito alto
+    pool_timeout=3600,     # Tempo máximo de espera por uma conexão do pool (60 segundos)
+    connect_args={"connect_timeout": 99999999}  # Timeout de conexão de 30 segundos
 )
 
 # Configurar SessionLocal para criar sessões de banco de dados

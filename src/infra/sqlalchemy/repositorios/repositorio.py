@@ -34,17 +34,17 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 
-DATABASE_URL = "postgresql://postgres:!impulse2828@sendblack-rds.c7a0kiga29ky.us-east-2.rds.amazonaws.com:5432/postgres"
+database_url =  "postgresql://impulse_crm_user:impulse2828@impulse-crm-db.c524eqmw0xhr.us-east-2.rds.amazonaws.com:5432/impulse-crm-db"
 
 engine = create_engine(
-    DATABASE_URL,
+    database_url,
     pool_pre_ping=True,
     pool_size=20,        # Tamanho do pool de conexões
     max_overflow=20,     # Número máximo de conexões adicionais
     pool_recycle=3600,   # Reciclar conexões após 3600 segundos (1 hora)
-    pool_timeout=3600,     # Tempo máximo de espera para uma conexão do pool (30 segundos)
-    connect_args={"connect_timeout": 30}  # Timeout de conexão do MySQL aumentado para um valor muito alto
+    pool_timeout=30      # Tempo máximo de espera para uma conexão do pool (30 segundos)
 )
+
 
 SessionLocal1 = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
