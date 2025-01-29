@@ -116,3 +116,7 @@ async def salvar_csv(
 
     return {"message":"iniciando processamento do arquivo","severity":"success"}
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8080)
+

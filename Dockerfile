@@ -17,4 +17,4 @@ ENV DATABASE_URL="mysql+mysqlconnector://refo9178_crm_impulse_user:dBVd(PlP]Z)3@
 EXPOSE 8000
 
 # Run uvicorn server
-CMD ["uvicorn", "src.api.main:app", "--reload", "--port", "8000", "--host", "0.0.0.0"]
+CMD ["uvicorn", "src.api.main:app", "--reload", "--port", "8080", "--host", "0.0.0.0"]
