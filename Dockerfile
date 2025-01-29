@@ -14,7 +14,7 @@ COPY . .
 
 ENV DATABASE_URL="mysql+mysqlconnector://refo9178_crm_impulse_user:dBVd(PlP]Z)3@reforcodev.com/refo9178_crm_impulse"
 # Make port 8000 available to the world outside this container
-EXPOSE 8000
+EXPOSE 8080
 
 # Run uvicorn server
 CMD ["uvicorn", "src.api.main:app", "--reload", "--port", "8080", "--host", "0.0.0.0"]
