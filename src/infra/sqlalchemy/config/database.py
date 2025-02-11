@@ -17,6 +17,10 @@ logger = logging.getLogger(__name__)
 # Carregar URL do banco de dados
 database_url =  "postgresql://postgres:impulse2828@34.46.172.48:5432/postgres"
 
+
+
+
+
 # Configurar o motor do SQLAlchemy com pool_pre_ping para verificar a conexão antes de usá-la
 engine = create_engine(
     database_url,
