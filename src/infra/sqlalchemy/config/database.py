@@ -15,7 +15,8 @@ logger = logging.getLogger(__name__)
 
 
 # Carregar URL do banco de dados
-database_url =  "postgresql://postgres:impulse2828@34.46.172.48:5432/postgres"
+database_url = "postgresql://postgres:sb-postgres@sendblack.cc5ig0oq6pc6.us-east-1.rds.amazonaws.com/postgres"
+
 
 
 

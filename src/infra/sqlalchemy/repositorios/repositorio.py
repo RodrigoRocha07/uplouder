@@ -34,7 +34,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 
-database_url =  "postgresql://impulse_crm_user:impulse2828@impulse-crm-db.c524eqmw0xhr.us-east-2.rds.amazonaws.com:5432/impulse-crm-db"
+database_url = "postgresql://postgres:sb-postgres@sendblack.cc5ig0oq6pc6.us-east-1.rds.amazonaws.com/postgres"
 
 engine = create_engine(
     database_url,
